@@ -14,7 +14,7 @@ let hr_dot = document.querySelector('.hr_dot');
 let min_dot = document.querySelector('.min_dot');
 let sec_dot = document.querySelector('.sec_dot');
 
-let endDate = '11/15/2025 00:00:00';
+let endDate = '11/23/2025 00:20:00';
 //date format mm/dd/yyyy
 
 let x = setInterval (function(){
@@ -67,13 +67,15 @@ const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
 
 // Preview Animations and Actions
-
 const revealBtn = document.getElementById('revealBtn');
 const story = document.getElementById('story');
 const time = document.getElementById('time');
 const hiddenDiv = document.getElementById('hiddenDiv');
 
-const END_DATE = '11/15/2025 00:00:00'; // mm/dd/yyyy hh:mm:ss
+const END_DATE = '11/23/2025 00:00:00'; // mm/dd/yyyy hh:mm:ss
+
+// Check if countdown has expired
+const IS_EXPIRED = Date.now() > new Date(END_DATE).getTime();
 
 // LocalStorage keys
 const STORAGE_KEY_REVEALED = 'surpriseRevealed_v2';
@@ -181,14 +183,22 @@ function revealOnce() {
 
 // --- Page Load Behavior ---
 if (localStorage.getItem(STORAGE_KEY_REVEALED) === 'true') {
-  // Already revealed — skip to revealed state
+  // Already revealed — skip everything
   story.style.display = 'none';
   time.style.display = 'none';
   hiddenDiv.classList.add('revealed');
   revealBtn.classList.add('centered-fixed');
   revealBtn.textContent = 'Continue The Birthday Tales! 💫';
+} else if (IS_EXPIRED) {
+  // Countdown passed — skip story + timer
+  story.style.display = 'none';
+  time.style.display = 'none';
+  hiddenDiv.classList.remove('revealed');
+  revealBtn.textContent = 'Reveal Surprise 💖';
+  revealBtn.disabled = false;
+  revealBtn.classList.add('centered-fixed');
 } else {
-  // Hide everything until user clicks
+  // Normal behavior — countdown still valid
   story.style.display = 'none';
   time.style.display = 'none';
   hiddenDiv.classList.remove('revealed');
@@ -197,6 +207,13 @@ if (localStorage.getItem(STORAGE_KEY_REVEALED) === 'true') {
 
 // --- Button Click ---
 revealBtn.addEventListener('click', () => {
+
+  // If expired, reveal immediately
+  if (IS_EXPIRED) {
+    revealOnce();
+    return;
+  }
+
   const alreadyRevealed = localStorage.getItem(STORAGE_KEY_REVEALED) === 'true';
 
   if (alreadyRevealed) {
