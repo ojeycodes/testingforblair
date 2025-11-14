@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora&family=Dancing+Script&family=Raleway&family=Playfair+Display&family=Lato&family=Pinyon+Script&family=Cormorant+Garamond&family=Parisienne&family=Quicksand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsiveness.css">
+    <link rel="shortcut icon" href="media/IMG_4416.JPG" type="image/x-icon">
+    <title>Chronicles of Blair</title>
+</head>
+<body>
+    <!-- Background songs -->
+    <audio id="bgMusic"></audio>
+
+    <!-- Preview Page -->
+    <div class="preview">
+         <!-- Preview text -->
+         <div class="button-wrapper">
+            <button id="revealBtn" class="glow-button">Shall We Begin This Adventure Sweetheart? 💖</button>
+         </div>
+         <div id="story" aria-hidden="true"></div>
+
+    <!-- Countdown Timer -->
+        <div id="time" aria-hidden="true">
+            <div class="circle" style="--clr:#D73371;">
+                <div class="dots day_dot"></div>
+                <svg>
+                  <circle cx="70" cy="70" r="70"></circle>
+                 <circle cx="70" cy="70" r="70" id="dd"></circle>
+                </svg>
+                <div id="days">00 <br><span>Days</span></div>
+            </div>
+
+            <div class="circle" style="--clr:#fff;">
+                <div class="dots hr_dot"></div>
+                <svg>
+                    <circle cx="70" cy="70" r="70"></circle>
+                    <circle cx="70" cy="70" r="70" id="hh"></circle>
+                </svg>
+                <div id="hours">00</div>
+            </div>
+
+            <div class="circle" style="--clr:#D73371;">
+              <div class="dots min_dot"></div>
+             <svg>
+                    <circle cx="70" cy="70" r="70"></circle>
+                    <circle cx="70" cy="70" r="70" id="mm"></circle>
+             </svg>
+                <div id="minutes">00</div>
+            </div>
+
+            <div class="circle" style="--clr:#FFF;">
+                <div class="dots sec_dot"></div>
+                <svg>
+                   <circle cx="70" cy="70" r="70"></circle>
+                   <circle cx="70" cy="70" r="70" id="ss"></circle>
+                </svg>
+                <div id="seconds">00</div>
+            </div>
+        </div>   
+    </div>
+    
+    <!-- Main Content -->
+    <div id="hiddenDiv" class="container blur-container" aria-hidden="true">
+
+        <div class="heading">
+            <div class="first-line">
+                <div class="intro-txts">
+                    <h2>Happy Birthday, <span>Blair! 💘</span></h2>
+                    <p class="p-1">For You, My Love <br><span>(Ima Mi)</span></p>
+                    <p class="p-2">
+                        You are truly special to me — in ways I can never fully put into words.
+                        It’s not just your laughter that lights up everything around you, or your kindness that quietly touches hearts…
+                        It’s the way your soul shines through in everything you do.
+                        You have this rare, beautiful way of making people feel seen, valued, and deeply understood.
+                        With you, even the smallest moments feel meaningful.
+                        You turn ordinary days into memories I want to keep forever, just by being yourself.
+                        If life ever gave me the chance to start all over again…
+                        I wouldn’t hesitate — I’d still find you, and I’d still choose you, every single time  <span>Joseph Blessing ❤️</span>
+                    </p>
+                    <div class="letter-btn"><a href="#letter">Read My Letter</a></div>
+                </div>
+                <div class="intro-img">
+                    <div class="btns">
+                        <a href="#audio">Play My Poem</a>
+                        <a href="#memories">Rewind The Moments?</a>
+                    </div>
+                    <div class="img-holder">
+                        <img src="media/IMG_3438.JPG" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="qualities">
+            <p class="title-headings quality-txt">A Few Special Qualities About You</p>
+            <div class="wrapper">
+                <button class="prev">&#10094;</button>
+                <div class="slider">   
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="media/IMG_4334.PNG" alt="">
+                            <p class="card-tag">Intellectually-driven</p>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">".... I asked a question in class and later went on to answer it myself."</h3>
+                            <div class="text-box">
+                                <p>
+                                    Without any doubt, I was truly astonished when you said this in one of our early conversations.
+                                    Ever since I've met you, I have been enamored with the way you bring up ideas and suggestions. 
+                                    You think and act uniquely! 
+                                </p>
+                                <div class="moreText" aria-hidden="true">
+                                    <p>
+                                        One of the fascinating topics I loved discussing with you was the "nursing healthcare plan"; you
+                                        smashed the lecture, teaching it in such a calm and understanding manner. Your mind is undoubtedly a universe, 
+                                        and I’m magnetically drawn to it. 😌
+                                    </p>
+                                </div>
+                                <button class="readMoreBtn" aria-expanded="false">Read more</button>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-profile">
+                                    <img src="media/IMG_4416.JPG" alt="">
+                                    <div class="card-profile-info">
+                                        <span class="card-profile-name">~ Blairsing</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="media/IMG_4049.JPG" alt="" class="down">
+                            <p class="card-tag">Dedication</p>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">".... I cannot afford to miss rehearsals. I really need to be there."</h3>
+                            <div class="text-box">
+                                <p>
+                                    Your committment to the things you love burns like a wildfire!
+                                    You give in fully and without any hesitation, do it consistently. Even
+                                    when I tell you to take breaks, you remain dedicated and that makes you a TRUE leader!
+                                </p>
+                                <div class="moreText" aria-hidden="true">
+                                    <p>
+                                        In my voice: "Blair, you need to take breaks and avoid the stress", and then you reply
+                                        "Don't worry, I'd be the one doing the stressing."<br> Your dedication teaches me what it means to stay true, 
+                                        to keep showing up, and to lead with patience and endurance. 🔥
+                                    </p>
+                                </div>
+                                <button class="readMoreBtn" aria-expanded="false">Read more</button>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-profile">
+                                    <img src="media/IMG_4056.JPG" alt="">
+                                    <div class="card-profile-info">
+                                        <span class="card-profile-name">~ Blairsing</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="media/IMG_4418.JPG" alt="">
+                            <p class="card-tag">Hardwork</p>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">".... I would intentionally not go late for work."</h3>
+                            <div class="text-box">
+                                <p>
+                                    You are such an ambitious lady who works hard to achieve her goals.
+                                    Your early postings here made me see how early you'd wake up to prepare to
+                                    go to work and most times, would skip early breakfast just so you start indexing patients.
+                                </p>
+                                <div class="moreText" aria-hidden="true">
+                                    <p>
+                                        You have built such an outstanding personality, taking up tasking roles and doing them effortlessly;
+                                        being the social director, a leader in your class, and even in chapel. This made me realize why you
+                                        handled so much responsibility; even at home. 🙃
+                                    </p>
+                                </div>
+                                <button class="readMoreBtn" aria-expanded="false">Read more</button>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-profile">
+                                    <img src="media/IMG_1276.PNG" alt="">
+                                    <div class="card-profile-info">
+                                        <span class="card-profile-name">~ Blairsing</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="media/IMG_2669.PNG" alt="">
+                            <p class="card-tag">Growing Passion for Christ</p>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">".... What you listen to, determines the kind of spirit you invite in your life.
+                                I could change your playlist if you want!"</h3>
+                            <div class="text-box">
+                                <p>
+                                    These words did a lot more than you realize! Ngl, were the actual wordings of yours that touched
+                                    me deeper than you could think. It was you reflecting the light of God in you.
+                                </p>
+                                <div class="moreText" aria-hidden="true">
+                                    <p>
+                                        One of the most beautiful things about you is the way your heart leans towards God, even in frail moments of your life. 
+                                    Your faith isn’t just a part of you, it is a greater part of who YOU are!
+                                        Watching you grow in your relationship with Christ fills me with awe — 
+                                        it’s a reminder that love rooted in God is the purest kind there is. 🙏
+                                    </p>
+                                </div>
+                                <button class="readMoreBtn" aria-expanded="false">Read more</button>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-profile">
+                                    <img src="media/IMG_4404.PNG" alt="">
+                                    <div class="card-profile-info">
+                                        <span class="card-profile-name">~ Blairsing</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="media/IMG_4138.PNG" alt="">
+                            <p class="card-tag">Loving</p>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">".... I'd be here if you need someone to talk to."</h3>
+                            <div class="text-box">
+                                <p>
+                                    These were the exact words of confident assurance you said to me; showing how much of a caring and 
+                                    loving person you are. Love is truly a beautiful thing when it is shared with the people around you!  
+                                    It was calm and reassuring.
+                                </p>
+                                <div class="moreText" aria-hidden="true">
+                                    <p>
+                                        Your love feels like safe haven. It’s not just in the words you say, but in how much you truly care — 
+                                        soft, patient, and deeply sincere; without pretence. Your thoughtfulness, tone of words, attentiveness 
+                                        in relationships has helped me to understand the loving version of YOU! 🤗
+                                </div>
+                                <button class="readMoreBtn" aria-expanded="false">Read more</button>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-profile">
+                                    <img src="media/IMG_4409.PNG" alt="">
+                                    <div class="card-profile-info">
+                                        <span class="card-profile-name">~ Blairsing</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="media/IMG_3442.JPG" alt="">
+                            <p class="card-tag">Emotional Intelligence</p>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">".... I know how you feel right now. Let's talk about it!"</h3>
+                            <div class="text-box">
+                                <p>
+                                    You are extremely sensitive to the feelings of others around you; and there's this enchanting
+                                    personality you have that in a way, lightens the heavy-hearted. Such that the demeaning feelings 
+                                    are seen, heard and understood deeply.
+                                </p>
+                                <div class="moreText" aria-hidden="true">
+                                    <p>
+                                        This makes being around you a safe space. It's such a special thing knowing how much feelings and
+                                        emotions can be trusted with you, without needing to seem vulnerable. You make such a good listener,
+                                        with an open heart and an alluring discretion. ❣
+                                    </p>
+                                </div>
+                                <button class="readMoreBtn" aria-expanded="false">Read more</button>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-profile">
+                                    <img src="media/IMG_3443.JPG" alt="">
+                                    <div class="card-profile-info">
+                                        <span class="card-profile-name">~ Blairsing</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="next">&#10095;</button>
+            </div>
+
+        </div>
+
+        <div class="memories" id="memories">
+            <p class="title-headings">Our Journey - Moments I Truly Cherish</p>
+            <div class="memory-bx">
+                <div class="bx">
+                    <div class="bx-img">
+                        <img src="media/IMG_4401-1.PNG" alt="">
+                    </div>
+                    <div class="bx-txt">
+                        <h2>Our First Texts</h2>
+                        <p>Those first texts may seem ordinary, but they were the beginning of everything.
+                            The day you walked into my life and the whole trajectory changed! 🙃
+                        </p>
+                        <p class="date">28 May 2025</p>
+                    </div>
+                </div>
+     
+                <div class="bx">
+                    <div class="bx-img">
+                        <img src="media/IMG_4400.PNG" alt="">
+                    </div>
+                    <div class="bx-txt">
+                        <h2>First Picture of You</h2>
+                        <p>I stylishly asked to have a beautiful photo of YOU and then you teased with a view-once picture.
+                            I guess I just had to find my way around with this..... hehe!
+                        </p>
+                        <p class="date">03 Jun 2025</p>
+                    </div>
+                </div>
+                <div class="bx">
+                    <div class="bx-img">
+                        <img src="media/IMG_1741.jpg" alt="">
+                    </div>
+                    <div class="bx-txt">
+                        <h2>Our First Date</h2>
+                        <p>On that night, we shared our hearts with each other. I loved the ideas and past experiences
+                            whole-heartedly shared. <br> I knew you were the ONE! 💖
+                        </p>
+                        <p class="date">04 Jul 2025</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="media">
+            <div class="audio" id="audio">
+                <div class="media-title">My Humble Poem To You, My Love 🎙</div>
+                <audio id="mainSong" controls>
+                    <source src="media/Blair's poem.mp3">
+                </audio>
+            </div>
+            <div class="video" id="video">
+                <div class="media-title medium">💞 “Au fil de chaque moment passé ensemble”</div>
+            </div>
+            <div class="video-container">
+                <video id="video3" src="https://res.cloudinary.com/dmfkopsgl/video/upload/v1762561886/IMG_4531_cndmoj.mp4" controls></video>
+                <video id="video1" src="https://res.cloudinary.com/dmfkopsgl/video/upload/v1762560985/IMG_4536_xqjse7.mp4" controls></video>
+                <video id="video2" src="https://res.cloudinary.com/dmfkopsgl/video/upload/v1762561871/IMG_4535_pfnqwt.mp4" controls></video>
+                    
+            </div>
+        </div>
+
+        <div class="final-msg" id="letter">
+            <h2>My Birthday Letter to You!</h2>
+            <p class="txt-right">To My One and Only, <br><span>Blairsing,</span></p>
+            <div class="txt-justify">
+                    <p>
+                        I still remember the first time I met you — I couldn't help but stare at your
+                    beautiful eyes like I was star-struck; and then you amazed me with your kind heart,
+                    supporting the ticket sales like we happened to never have been complete strangers
+                    and much like we had even known each other for over a thousand years. I guess maybe in past lives, 
+                    we have been lifetime friends 😅.
+                    </p>
+                    <p>
+                        That night, I saw someone so unique! A young lady, unlike any other! A young lady with a precious heart, 
+                    the woman who changed how I started to see things; in love and in truth. A young lady who is pretty, gorgeous,
+                    charming, stunning, and with a beautiful heart; walks in so much confidence and elegance. And Oh! Did I tell you how much I 
+                    admire your gait?? Tell me you're a model without saying 😅.
+                    </p>
+                    <p>
+                        Beauty does lie in the eyes of the Beholder!
+                    You are the lady I would choose over and over again to spend the rest of my life with.
+                    And on the night of our date, I couldn't help but notice how your smile lit up everything and 
+                    how my heart decided, quietly and forever, that it would keep you safe and treat you like 
+                    the Queen that you are! 💟
+                    </p>
+                    <p>
+                        You are a such a special, smart, sweet-hearted person. An irresistible and unforgettable soul! Even a 
+                        champ, like I would always say. <br>
+                    Today, on your birthday, I want to remind you of how deeply loved and cherished you are. <br>
+                    I say all of these from the bottom and depth of my heart! 💓
+                    </p>
+                    <p class="last-line">
+                        On this special day, I would like to say, <br>
+                        HAPPY BIRTHDAY TO YOU! <br>
+                    </p>
+                    <span>
+                        I LOVE YOU SO MUCH!
+                    </span>
+                    <p class="last-txt"> - Forever yours.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

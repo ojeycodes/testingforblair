@@ -1,0 +1,707 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    user-select: none;
+}
+
+body{
+    background: #EAC3E7;
+    font-family: 'Cormorant Garamond', serif; 
+}
+
+:root{
+    --bgColor:#EAC3E7;
+    --romanticRose: #D73371;
+    --deepTeal: #314949;
+    --lavendarBlush: #FFF0F5;
+    --mutedPlum: #6B4E71;
+    --romanticFont: 'Great Vibes', cursive;
+}
+
+/* Background Animation */
+.floating-heart {
+      position: fixed;
+      bottom: 0;
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.6;
+}
+
+@keyframes floatUp {
+      0% {transform: translateY(0); opacity: 1;}
+      100% {transform: translateY(-100vh); opacity: 0;}
+}
+.fade-in {
+      animation: fadeIn 2s ease-in-out forwards;
+      opacity: 0;
+}
+@keyframes fadeIn {
+      to {opacity: 1;}
+}
+
+/* Background Animation Ends */
+
+/* Timer Animations */
+#time{
+    display: flex;
+    gap: 30px;
+    margin-top: 25px;
+}
+
+#time .circle{
+    position: relative;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#time .circle svg{
+    position:relative;
+    width: 150px;
+    height: 150px;
+    transform: rotate(270deg);
+}
+
+#time .circle svg circle{
+    width: 100%;
+    height: 100%;
+    fill: transparent;
+    stroke-width: 8;
+    stroke: #282828;
+    stroke-linecap: round;
+    transform: translate(5px,5px);
+}
+
+#time .circle svg circle:nth-child(2){
+    stroke: var(--clr);
+    stroke-dasharray: 440;
+    stroke-dashoffset: 440;
+}
+
+#time div{
+    position: absolute;
+    text-align: center;
+    font-weight: 500;
+    color: #6B4E71;
+    font-size: 2.5rem;
+}
+
+#time div span{
+    position: absolute;
+    transform: translateX(-50%) translateY(-10px);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-top: 5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+#time .dots{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 1000;
+}
+
+#time .dots::before{
+    content: '';
+    position: absolute;
+    top: -3px;
+    width: 15px;
+    height: 15px;
+    background: var(--clr);
+    border-radius: 50%;
+    box-shadow: 0 0 20px var(--clr), 
+    0 0 60px var(--clr);
+}
+
+/* Timer Animation Ends */
+
+
+/* Preview page */
+.preview{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    top: 1%;
+    left: 5%;
+}
+
+/* Blur Settings and Word Animations*/
+
+/* Fade in Animation */
+  /* Button wrapper sits near top during story/time, but the final button becomes fixed-centered */
+  .button-wrapper{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:120px;
+  }
+
+  /* Glowing button */
+  .glow-button {
+    padding: 15px 35px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #D73371;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #D73371, 0 0 20px #EAC3E7, 0 0 30px #D73371;
+    animation: pulse 1.5s infinite alternate;
+    transition: 0.8s ease;
+    z-index: 2;
+    opacity: 1;
+  }
+  .glow-button:hover{ transform:scale(1.04) }
+  .glow-button.disabled{ cursor:not-allowed; opacity:.6; box-shadow:none; animation:none; }
+
+  @keyframes pulse{
+    0% { box-shadow: 0 0 10px #D73371, 0 0 20px #EAC3E7, 0 0 30px #D73371; }
+    50% { box-shadow: 0 0 20px #D73371, 0 0 40px #EAC3E7, 0 0 60px #D73371; }
+    100% { box-shadow: 0 0 10px #D73371, 0 0 20px #EAC3E7, 0 0 30px #D73371; }
+  }
+
+
+  /* Story Text */
+#story {
+    background: transparent;
+    font-family: var(--romanticFont);
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.6;
+    letter-spacing: 0.7px;
+    text-align: justify;
+    max-width: 1100px;
+    color: #fff;
+}
+
+  .word{
+    display:inline-block;
+    word-spacing: 10px;
+    opacity:0;
+    color:var(--mutedPlum);
+    animation:wordIn .6s forwards;
+  }
+  @keyframes wordIn{ from{opacity:0; transform:translateY(14px)} to{opacity:1; transform:none} }
+
+
+  /* Main content blurred before main day */
+  .blur-container{
+    backdrop-filter: blur(25px);
+    filter: blur(10px);
+    opacity: 0.45;
+    transform: translateY(40px);
+    transition: filter 2.5s ease, opacity 2.5s ease, transform 2s ease;
+    box-shadow: 0 0 30px rgba(215, 51, 113, 0.2);
+  }
+
+  .blur-container.revealed{
+    filter:blur(0);
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  /* fade-away for story when hiding */
+  .fade-away{ opacity:0 !important; transform:translateY(-18px); transition:opacity 1.8s ease, transform 1.8s ease; }
+
+
+/* Revealed Body After Event Day */
+.container{
+    margin: 5rem;
+    border: 3px solid var(--lavendarBlush);
+    border-radius: 10px;
+    padding: 30px;
+}
+
+
+.heading, .memories, .qualities, .media{
+    margin-bottom: 12.5rem;
+}
+
+/* First Page of the site*/
+.heading .first-line{
+    display: flex;
+    gap: 5rem;
+    line-height: 1.7;
+    
+}
+
+.heading .first-line h2{
+    font-size: 45px;
+    font-weight: 300;
+}
+
+.first-line .intro-txts{
+    text-align: justify;
+}
+
+.intro-txts span{
+    font-family: var(--romanticFont);
+    color: var(--mutedPlum);
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.intro-txts .p-1{
+    font-size: 2rem;
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+.intro-txts .p-2{
+    user-select: none;
+    font-size: 20px;
+    margin-top: 0;
+    line-height: 1.5;
+}
+
+.first-line .intro-img{
+    display: flex;
+    flex-direction: column;
+}
+
+.first-line .intro-img .btns{
+    position: relative;
+    left: 7.5%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 10px;
+}
+
+.intro-txts .letter-btn{
+    margin-top: 15px; 
+}
+
+.intro-txts .letter-btn a{
+    padding: 10px 25px;
+    background: var(--romanticRose);
+    color: var(--lavendarBlush);
+    font-size: 18px;
+    border-radius: 25px;
+    border: none;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: color 0.4s ease, transform 0.3s ease;
+}
+
+.first-line .intro-img .btns a
+{
+    text-decoration: none;
+    padding: 10px 25px;
+    background: var(--romanticRose);
+    border-radius: 25px;
+    color: var(--lavendarBlush);
+    font-size: 18px;
+    font-weight: 600;
+    transition: color 0.4s ease, transform 0.3s ease;
+}
+
+.first-line .intro-img .btns a:hover,
+.intro-txts .letter-btn a:hover{
+    color: var(--deepTeal);
+    transform: scale(1.1);
+}
+
+.first-line .intro-img .img-holder{
+    width: 470px;
+    height: 30rem;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.first-line .intro-img .img-holder img{
+    position: relative;
+    top: -25%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.title-headings{
+    color: var(--deepTeal);
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+
+/* Qualities section */
+.wrapper{
+    position: relative;
+    max-width: 1050px;
+    margin: 20px auto 100px auto;
+    overflow: hidden;
+}
+
+.wrapper .slider{
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    transition: transform 0.3s ease;
+}
+
+.wrapper .card{
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 20px;
+    min-width: 500px;
+    height: auto;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+button.next, button.prev{
+    position: absolute;
+    z-index: 10;
+    top: 45%;
+    transform: translateY(-50%);
+    background: #D73371;
+    color: white;
+    border: none;
+    font-size: 16px;
+    padding: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button.prev:hover, button.next:hover{
+    background: var(--bgColor);
+    color: var(--deepTeal);
+}
+
+.prev{
+    left: 10px;
+}
+
+.next{
+    right: 10px;
+}
+
+.card .card-image{
+    position: relative;
+}
+
+.card .card-image img{
+    width: 100%;
+    aspect-ratio: 11/8;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 25px;
+    padding: 15px;
+    user-select: none;
+}
+
+.card .card-image .card-tag{
+    position: absolute;
+    left: 25px;
+    top: 25px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.75rem;
+    padding: 5px 15px;
+    background: rgba(255,255,255,0.9);
+    color: var(--mutedPlum);
+}
+
+.card .card-content{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 10px 25px 25px;
+}
+
+.card .card-content .card-title{
+    color: var(--romanticRose);
+    font-size: 1rem;
+    text-align: center;
+    font-style: italic;
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+.text-box {
+      max-width: 700px;
+      margin: 10px auto;
+      padding: 15px;
+      line-height: 1.5;
+      border-radius: 12px;
+      box-shadow: 0 6px 22px rgba(0,0,0,0.08);
+      color: var(--deepTeal);
+      text-align: justify;
+      font-size: 1.1rem;
+}
+
+/* the hidden/expandable part */
+.moreText {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 450ms ease, opacity 300ms ease;
+    will-change: max-height, opacity;
+}
+
+.moreText.open {
+      opacity: 1;
+}
+
+.readMoreBtn {
+    background: black;
+    position: relative;
+    left: 75%;
+    margin-top: 12px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.81rem;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, var(--mutedPlum) 0%, var(--romanticRose) 100%);
+    box-shadow: 0 8px 15px rga(99, 102, 241, 0.2);
+    transition: all 0.3s ease;
+}
+
+.readMoreBtn:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(99, 102, 241, 0.3);
+    transform: scale(1.05);
+}
+
+.readMoreBtn:active { transform: translateY(0); }
+
+.card .card-content .card-footer{
+    display: flex;
+    align-items: center;
+    padding-top: 5px;
+    margin-top: auto;
+    justify-content: right;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.card .card-footer .card-profile{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: right;
+}
+
+.card .card-profile img{
+    margin-right: 10px;
+    margin-left: 15px;
+    object-fit: cover;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+
+.card .card-profile .card-profile-info{
+    font-size: 1.75rem;
+    font-weight: 600;
+    font-family: var(--romanticFont);
+    color: var(--deepTeal);
+}
+
+.card .card-profile .card-profile-name{
+    font-size: 1.75rem;
+    font-weight: 600;
+    font-family: var(--romanticFont);
+    color: var(--deepTeal);
+}
+
+
+/* Memories Section */
+.memory-bx{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.bx{
+    display: flex;
+    background: var(--lavendarBlush);
+    border: 0.5px solid var(--romanticRose);
+    border-radius: 10px;
+    margin-bottom: 15px;
+    padding: 20px;
+    height: auto;
+    opacity: 0.9;
+}
+
+.bx .bx-img{
+    width: 300px;
+    height: 200px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.bx .bx-img img{
+    position: relative;
+    top: -55%;
+    max-width: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+.bx-txt{
+    max-width: 700px;
+    margin-left: 30px;
+    text-align: justify;
+    margin-top: 20px;
+}
+
+.bx-txt h2{
+    color: var(--romanticRose);
+    font-family: var(--romanticFont);
+    letter-spacing: 2px;
+}
+
+.bx-txt p{
+    width: 100%;
+    margin-top: 25px;
+    text-align: justify;
+    font-size: 20px;
+    user-select: none;
+}
+
+.date{
+    color: var(--deepTeal);
+    font-weight: 300;
+    opacity: 0.75;
+}
+
+/* Poem and Video Message Section */
+.media{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+}
+
+.media-title{
+    color: var(--deepTeal);
+    font-size: 1.85rem;
+    padding: 1rem 0;
+    font-weight: 700;
+    margin: 1.5rem 0;
+    margin-left: 30px;
+}
+
+.media .medium{
+    font-style: italic;
+}
+
+.media .audio audio{
+    display: flex;
+    max-width: 100%;
+    margin: auto;
+}
+
+
+.media .video-container{
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    padding: 1.5rem;
+    max-width:700px;
+    overflow: hidden;
+}
+
+.media .video-container video{
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    object-fit: contain;
+    object-position: center;
+}
+
+/* Birthday Letter Section */
+.final-msg{
+    background: var(--lavendarBlush);
+    padding: 3rem;
+    text-align: justify;
+    border-radius: 10px;
+    border: 0.5px solid var(--romanticRose);
+}
+
+.final-msg h2{
+    display: flex;
+    justify-content: center;
+    font-family: var(--romanticFont);
+    color: var(--romanticRose);
+    font-size: 2.5rem;
+}
+
+.final-msg p{
+    font-weight: 350;
+}
+
+.final-msg .txt-right{
+    font-size: 1.5rem;
+    text-align: right;
+    margin-top: 10px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.final-msg .txt-justify{
+    user-select: none;
+    margin-top: 25px;
+    text-align: justify;
+}
+
+.txt-right span{
+    display: inline-block;
+    font-family: var(--romanticFont);
+    color: var(--romanticRose);
+    font-weight: 600;
+    font-size: 2rem;
+    margin-top: 10px;
+}
+
+.txt-justify p{
+    margin-top: 20px;
+    line-height: 2;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.txt-justify span{
+    font-weight: bold;
+}
+
+.txt-justify span, .txt-justify .last-line{
+    display: block;
+    font-size: 18px;
+    font-family: 'Quicksand', sans-serif;
+    text-align: right;
+}
+
+.txt-justify .last-txt{
+    font-family: var(--romanticFont);
+    color: var(--romanticRose);
+    text-align: right;
+    font-size: 35px;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    margin-top: -10px;
+}
