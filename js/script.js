@@ -14,7 +14,7 @@ let hr_dot = document.querySelector('.hr_dot');
 let min_dot = document.querySelector('.min_dot');
 let sec_dot = document.querySelector('.sec_dot');
 
-let endDate = '11/23/2025 00:20:00';
+let endDate = '11/23/2025 00:00:00';
 //date format mm/dd/yyyy
 
 let x = setInterval (function(){
@@ -665,3 +665,4 @@ window.addEventListener('load', () => {
   });
 
   // Read more button ends
+
