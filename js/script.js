@@ -109,7 +109,7 @@ Happy Birthday in Advance, my Love ❤️. I guess no one had to beat me to sayi
 You are, and always will be, my favorite story to tell. A glimpse of all the unraveled words would
 have a deeper meaning now that it's completely written out. Now with a more open heart: I'd like you to gaze 
 over each line, each text again because each and every word holds meaning that come from my heart to yours.
-See You At Midnight Darling!
+See You At Midnight Darling! 💘
 `.trim();
 
 // --- Functions ---
@@ -275,7 +275,7 @@ const isIOS = /iP(ad|hone|od)/i.test(navigator.userAgent);
 // const isMobile = isAndroid || isIOS;
 
 // =================== PLAYLIST SETUP ===================
-let playlist = ["perfect.mp3", "i give you my dreams.mp3", "all of me.mp3"];
+let playlist = ["https://res.cloudinary.com/dmfkopsgl/video/upload/v1763172950/New_Blair_Mix_auvxjo.mp3", "perfect.mp3", "i give you my dreams.mp3", "all of me.mp3"];
 
 // Shuffle playlist for returning users
 if (localStorage.getItem("hasVisitedBefore")) {
@@ -663,5 +663,6 @@ window.addEventListener('load', () => {
       });
     });
   });
+
 
   // Read more button ends
